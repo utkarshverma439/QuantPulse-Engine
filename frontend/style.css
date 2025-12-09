@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0e27;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 20px;
+}
+
+.panel {
+    background: #1a1f3a;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.panel h2 {
+    margin-bottom: 20px;
+    color: #667eea;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+.section {
+    margin-bottom: 25px;
+}
+
+.section h3 {
+    margin-bottom: 15px;
+    color: #a0a0a0;
+    font-size: 1.1em;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #0a0e27;
+    border: 1px solid #667eea;
+    border-radius: 5px;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #764ba2;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #764ba2;
+}
+
+button.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+#instrumentList {
+    background: #0a0e27;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    min-height: 50px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.instrument-item {
+    padding: 5px;
+    margin: 5px 0;
+    background: #1a1f3a;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.live-data {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.data-card {
+    background: #0a0e27;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.data-card h3 {
+    margin-bottom: 15px;
+    color: #667eea;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #1a1f3a;
+}
+
+.data-row:last-child {
+    border-bottom: none;
+}
+
+.value {
+    font-weight: 600;
+    color: #fff;
+}
+
+.pnl-value {
+    font-size: 1.3em;
+}
+
+.pnl-value.positive {
+    color: #4caf50;
+}
+
+.pnl-value.negative {
+    color: #f44336;
+}
+
+.pnl-row {
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 2px solid #667eea;
+}
+
+.indicators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.indicator-card {
+    background: #0a0e27;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #667eea;
+}
+
+.indicator-label {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    margin-bottom: 8px;
+}
+
+.indicator-value {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #667eea;
+}
+
+#snapshotResult {
+    margin-top: 15px;
+    padding: 15px;
+    background: #0a0e27;
+    border-radius: 5px;
+    min-height: 50px;
+}
+
+@media (max-width: 1024px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+}

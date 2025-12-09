@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantPulse Engine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ QuantPulse Engine</h1>
+            <p>Real-time PnL & Indicators Dashboard</p>
+        </header>
+        
+        <div class="main-grid">
+            <!-- Left Panel: Controls -->
+            <div class="panel controls-panel">
+                <h2>Instrument Management</h2>
+                
+                <div class="section">
+                    <h3>Load Instruments</h3>
+                    <input type="text" id="symbol" placeholder="Symbol (e.g., RELIANCE)">
+                    <input type="number" id="entryPrice" placeholder="Entry Price" step="0.01">
+                    <input type="number" id="quantity" placeholder="Quantity">
+                    <button onclick="addInstrument()">Add Instrument</button>
+                    <div id="instrumentList"></div>
+                    <button onclick="loadInstruments()" class="primary">Load All Instruments</button>
+                </div>
+                
+                <div class="section">
+                    <h3>Subscribe to Symbols</h3>
+                    <input type="text" id="subscribeSymbols" placeholder="Symbols (comma-separated)">
+                    <select id="mode">
+                        <option value="simulation">Simulation Mode</option>
+                        <option value="csv">CSV Replay Mode</option>
+                    </select>
+                    <input type="text" id="csvFile" placeholder="CSV filename (for CSV mode)">
+                    <button onclick="subscribe()" class="primary">Subscribe</button>
+                </div>
+            </div>
+            
+            <!-- Right Panel: Live Data -->
+            <div class="panel data-panel">
+                <h2>Live Monitor</h2>
+                
+                <div class="section">
+                    <label>Select Symbol:</label>
+                    <select id="selectedSymbol" onchange="updateSymbol()">
+                        <option value="">-- Select Symbol --</option>
+                    </select>
+                </div>
+                
+                <div id="liveData" class="live-data">
+                    <div class="data-card">
+                        <h3>Price Info</h3>
+                        <div class="data-row">
+                            <span>LTP:</span>
+                            <span id="ltp" class="value">--</span>
+                        </div>
+                        <div class="data-row">
+                            <span>Timestamp:</span>
+                            <span id="timestamp" class="value">--</span>
+                        </div>
+                    </div>
+                    
+                    <div class="data-card pnl-card">
+                        <h3>PnL</h3>
+                        <div class="data-row">
+                            <span>Entry Price:</span>
+                            <span id="entryPriceDisplay" class="value">--</span>
+                        </div>
+                        <div class="data-row">
+                            <span>Current Price:</span>
+                            <span id="currentPrice" class="value">--</span>
+                        </div>
+                        <div class="data-row">
+                            <span>Quantity:</span>
+                            <span id="quantityDisplay" class="value">--</span>
+                        </div>
+                        <div class="data-row pnl-row">
+                            <span>PnL:</span>
+                            <span id="pnl" class="value pnl-value">--</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>Indicators</h3>
+                    <p style="font-size: 12px; color: #888; margin: 5px 0;">Note: Indicators need time to calculate (SMA-20 needs 20 ticks, ~2 seconds)</p>
+                    <div class="indicators-grid">
+                        <div class="indicator-card">
+                            <div class="indicator-label">SMA-20</div>
+                            <div id="sma20" class="indicator-value">--</div>
+                        </div>
+                        <div class="indicator-card">
+                            <div class="indicator-label">EMA-10</div>
+                            <div id="ema10" class="indicator-value">--</div>
+                        </div>
+                        <div class="indicator-card">
+                            <div class="indicator-label">ROC</div>
+                            <div id="roc" class="indicator-value">--</div>
+                        </div>
+                        <div class="indicator-card">
+                            <div class="indicator-label">Volatility</div>
+                            <div id="volatility" class="indicator-value">--</div>
+                        </div>
+                        <div class="indicator-card">
+                            <div class="indicator-label">VWAP</div>
+                            <div id="vwap" class="indicator-value">--</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>Snapshot by Timestamp (CSV Mode)</h3>
+                    <input type="number" id="snapshotTimestamp" placeholder="Unix timestamp" step="0.01">
+                    <button onclick="getSnapshot()">Get Snapshot</button>
+                    <div id="snapshotResult"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
